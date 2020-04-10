@@ -2,8 +2,9 @@
   <div class="home">
    
       <div class="content">
-        <Snippet />
+        <snippet />
       </div>
+
     
   </div>
 </template>
@@ -14,7 +15,7 @@ import snippet from 'src/components/snippet.vue';
 export default {
   name: 'homepage',
   components: {
-    Snippet
+    snippet
   }
 }
 </script>
@@ -23,6 +24,6 @@ export default {
 
 body {
 
-    background-image: url(././galaxy-purple)
+    background-image: url(src/)
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="add">
     
     <div class="content">
-      <newSnippet/>
+      <createsnippet/>
     </div>
   </div>
 </template>
