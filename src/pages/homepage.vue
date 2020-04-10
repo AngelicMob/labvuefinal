@@ -24,6 +24,6 @@ export default {
 
 body {
 
-    background-image: url(src/)
+    background-image: url('');
 }
 </style>
