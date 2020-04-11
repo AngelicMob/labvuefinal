@@ -22,8 +22,4 @@ export default {
 
 <style scoped>
 
-body {
-
-    background-image: url('');
-}
 </style>
