@@ -2,10 +2,11 @@
   <div id="app">
     <div class="nav">
       
-      <li><a href="">Home</a></li>
-      <li><a href="">Create</a></li>
-      <li><a href="">View snippets</a></li>
-       
+<!--importing and showing the components-->
+      <!-- <home v-if="">Home</home>
+      <createsnippet v-if="">Create</createsnippet>
+      <createsnippet v-if="">View Snippet</createsnippet> -->
+
     </div>
     
   </div>
@@ -13,38 +14,75 @@
 
 <script>
 
+import homepage from './pages/homepage.vue';  
+import createsnippet from './components/createsnippet.vue';
 
 export default {
 
-  name: 'App'
+  name: 'App',
+
+  components: {
+
+  homepage,
+  createsnippet
+
+  },
+
+
+  data: () => ({
+
+
+
+
+  }),
+
+
+  methods: {
+
+
+
   }
+  
+  };
+
 
 </script>
 
 <style>
+
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap%22");
 
 
 *{
   padding: 0;
   margin: 0;
   background-color: #2a3439;
+
+}
+
+body {
+font-family: "Quicksand", sans-serif;
 }
 
 #app {
   
-  font-family: 'Orbitron', sans-serif, monospace;
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
   color: #2c3e50;
   background-image: url('./solar-image.jpg');
-  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
   background-color: #141e22;
-  background-size: cover;
+  background-attachment: fixed;
+  background-size: cover; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  height: 100vh;
+  z-index: -1;
+  overflow: auto;
+
 }
 
  
@@ -67,23 +105,5 @@ export default {
   .nav li {
       list-style: none;
   }
-
-
-
-
-/*testing2 that is original with the vue thing
-#nav {
-  padding: 20px;
-  float: left;
-  color: antiquewhite;
-}
-#nav a {
-  font-weight: normal;
-  color: antiquewhite;
-  margin: 1em;
-  text-decoration-line: none;
-  display: block;
-}
-*/
 
 </style>

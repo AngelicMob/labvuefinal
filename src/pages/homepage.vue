@@ -16,8 +16,23 @@ export default {
   name: 'homepage',
   components: {
     snippet
+
   }
+,
+
+data: () => ({
+
+
+}),
+
+methods: {
+
+
 }
+
+} 
+
+
 </script>
 
 <style scoped>
