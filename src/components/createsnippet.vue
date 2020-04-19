@@ -15,42 +15,32 @@
 </template>
 ​
 <script>
-​
 import axios from 'axios';
 const url = 'https://www.forverkliga.se/JavaScript/api/api-snippets.php?';
-
-
-export default {
-    name: 'createsnippet',
-     data(){
-        return {
-            title: '',
-            content: ''
+    export default {
+        
+        name: "createsnippet",
+        
+        data(){
+            return {
+                title: '',
+                content: ''
+            }
+        },
+            methods: {
+                add(){
+            
+                    console.log('add called with id:  ' + this.title + '  and content: ' + this.content)
+                    axios.post(url, { add:'', title: this.title, content: this.content})
+                    .then(res => console.log(res.data.message))
+                    .catch(err => console.log('does not work' + err))
+                    this.title = '';
+                    this.content = '';
+                }
+        ​   }
         }
-    },
-    methods:{
-        add(){
-           
-    
-            console.log('add called with id:  ' + this.title + '  and content: ' + this.content)
-            axios.post(url, { add:'', title: this.title, content: this.content})
-            .then(res => console.log(res.data.message))
-            .catch(err => console.log('does not work' + err))
-            this.title = ''
-            this.content = ''
-              
-        }
-​
-​   }
-
-}
-​
 </script>
-​
-
 <style scoped>
-
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
 h3{
     color: antiquewhite;

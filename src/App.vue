@@ -7,6 +7,8 @@
       <createsnippet v-if="">Create</createsnippet>
       <createsnippet v-if="">View Snippet</createsnippet> -->
 
+      <homepage />
+
     </div>
     
   </div>
@@ -22,7 +24,7 @@ export default {
 
   components: {
 
-    homepage
+    homepage,
 
   },
 
@@ -68,7 +70,7 @@ font-family: "Quicksand", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  background-image: url('./solar-image.jpg');
+  background-image: url('assets/solar-image.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-color: #141e22;

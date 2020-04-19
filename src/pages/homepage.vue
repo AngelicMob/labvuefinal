@@ -2,8 +2,8 @@
   <div class="home">
    
       <div class="content">
-        <createsnippet />
         <snippet />
+        <createsnippet />
       </div>
 
     
@@ -12,9 +12,15 @@
 
 
 <script>
-import snippet from 'src/components/snippet.vue';
+import snippet from '@/components/snippet.vue';
+import createsnippet from '@/components/createsnippet.vue';
+
+
 export default {
+  
   name: 'homepage',
+
+
   components: {
     
     snippet,

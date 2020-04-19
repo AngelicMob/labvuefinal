@@ -6,7 +6,7 @@
                 <li><a href="#" @click="getMostUpvoted">Most Upvoted</a></li> |
                 <li><a href="#" @click="getReported">Get Reported</a></li>
             </ul> 
-            <div class="loader" v-if="snippets.length === 0"> Loading...</div>
+            
             <div class="container" v-for="snippet in snippets" v-bind:key="snippet.id" >      
                 <h2>{{snippet.title}}</h2>
                 <div class="content">
@@ -35,81 +35,18 @@
 
   
 </template>
-​
 <script>
-​
-import axios from 'axios';
+import axios from 'axios'
 const url = 'https://www.forverkliga.se/JavaScript/api/api-snippets.php?';
-
 export default {
     
-    name: 'snippet',
+    name: 'Snippet',
     data(){
         return {
             snippets: []
         }
     },
     methods: {
-
-        voteUp(id){ 
-            console.log('vote up called with id:' + id)  
-            this.snippets = []
-            axios.post(url, { upvote:'', id:id})
-            .then(res => {console.log(res.data.message)
-                if(res !== null){
-                    this.getLatest();
-                } 
-            })
-            .catch(err => console.log(err))
-          
-        },
-        
-        voteDown(id){
-            console.log('vote down called with id:  ' + id)
-            this.snippets = []
-            axios.post(url,{downvote:'', id: id })
-            .then(res => {console.log(res.data.message)
-                if(res !== null){
-                    this.getLatest();
-                }
-            })
-            .catch(err => console.log(err))           
-        },
-        del(id){
-            console.log('delete called with id:  ' + id )
-            this.snippets = []
-            axios.post(url, {delete:'',id: id})
-            .then(res => {console.log(res.data.message)
-            if(res !== null){
-                this.getLatest();
-            }
-            })
-            .catch(err => console.log(err))
-            
-        },
-        report(id){
-            console.log('report called with id:  ' + id )
-            axios.post(url, {report: '',id: id})
-            .then(res => {console.log(res.data.message)
-            if(res !== null){
-                this.getLatest();
-            }
-            })
-            .catch(err => console.log(err))
-           window.relo
-        },
-        unreport(id){
-            console.log('unreport called with id:  ' + id )
-            axios.post(url, {unreport: '',id: id})
-            .then(res => {console.log(res.data.message)
-            if(res !== null){
-                this.getLatest();
-            }
-            })
-            .catch(err => console.log(err))
-            
-        }  
-        },
         getLatest(){
             this.snippets = [];
             axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?latest')
@@ -122,18 +59,74 @@ export default {
             axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?best')
             .then(res => this.snippets = res.data)
             .catch(err => console.log(err))
-            
+            //console.log(this.snippets)
         },
         getReported(){
             this.snippets = [];
              axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?reported')
             .then(res => this.snippets = res.data)
             .catch(err => console.log(err))
-           
+           //console.log(this.snippets)
         },
-        
-        
-        created(){
+        voteUp(id){ 
+            console.log('vote up called with id:' + id)
+            this.snippets = []
+            axios.post(url, { upvote:'', id:id})
+            .then(res => {console.log(res.data.message)
+                if(res !== null){
+                    this.getLatest();
+                } 
+            })
+            .catch(err => console.log(err))
+          
+        },
+        voteDown(id){
+            console.log('vote down called with id:  ' + id)
+            this.snippets = []
+            axios.post(url,{downvote:'', id:id })
+            .then(res => {console.log(res.data.message)
+                if(res !== null){
+                    this.getLatest();
+                }
+            })
+            .catch(err => console.log(err))           
+        },
+        del(id){
+            console.log('delete called with id:  ' + id )
+            this.snippets = []
+            axios.post(url, {delete:'',id:id})
+            .then(res => {console.log(res.data.message)
+            if(res !== null){
+                this.getLatest();
+            }
+            })
+            .catch(err => console.log(err))
+            
+        },
+        report(id){
+            console.log('report called with id:  ' + id )
+            axios.post(url, {report:'',id:id})
+            .then(res => {console.log(res.data.message)
+            if(res !== null){
+                this.getLatest();
+            }
+            })
+            .catch(err => console.log(err))
+           window.relo
+        },
+        unreport(id){
+            console.log('unreport called with id:  ' + id )
+            axios.post(url, {unreport:'',id:id})
+            .then(res => {console.log(res.data.message)
+            if(res !== null){
+                this.getLatest();
+            }
+            })
+            .catch(err => console.log(err))
+            
+        }  
+    },
+    created(){
             axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?latest')
             .then(res => this.snippets = res.data)
             .catch(err => console.log(err))
@@ -141,30 +134,31 @@ export default {
     }   
 }
 </script>
-​
+
 
 <style scoped>
+
 .rating{
         display: flex;
     }
     #Score{
-        color: #00877C;
+        color: chartreuse;
     }
     #id{
-        color: #00877C;
+        color: chartreuse;
         
     }
     ul{
         list-style-type: none;
         float: right;
         padding:0px 10px 30px 5px;
-        color:#00877C;
+        color: green;
     }
     li{
         display: inline;
     }
     a{
-        color: #00877C;
+        color: chartreuse;
         text-decoration: none;
     }
     a:hover{
@@ -173,7 +167,7 @@ export default {
     h2{
         float: left;
         padding: 10px;
-        color: #00877C;
+        color: chartreuse;
     }
     .container{
         width: 900px;
@@ -188,17 +182,18 @@ export default {
         width: 870px;
         margin: 50px auto 10px 10px;
         overflow: auto; 
-        border: 1px solid #00877C;
+        border: 1px solid chartreuse;
         color: rgb(192, 192, 192);
         
     }
     .btn {
-        background-color: #0F6775; 
+        background-color: #4CAF50; /* Green */
         border: none;
         color: white;
         padding: 7px 32px;
         text-align: center;
         text-decoration: none;
+        /* display: inline-block; */
         font-size: 16px;
         margin: 7px 7px;
         transition-duration: 0.4s;
@@ -207,20 +202,20 @@ export default {
     }
     .btn1 {
         background-color: #151a1c ;
-        color: #00877C; 
-        border: 1px solid #00877C;
+        color: #4CAF50; 
+        border: 1px solid #4CAF50;
     }
     .btn1:hover {
-        background-color:#00877C;
+        background-color: #4CAF50;
         color: white; 
     }
     .btn2 {
         background-color: #151a1c; 
-        color: #D34040; 
-        border: 1px solid #D34040;
+        color: red; 
+        border: 1px solid red;
     }
     .btn2:hover {
-        background-color:#D34040;
+        background-color: red;
         color: white;
     }
     .btnR{
@@ -230,8 +225,6 @@ export default {
     p{
         padding: 15px;
     }
-
-
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -242,10 +235,68 @@ export default {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  
-  background: #00877C;
+  /* background: #888;  */
+  background: chartreuse;
+}
+/**---------------------spinner Created by @lukehaas at https://projects.lukehaas.me/css-loaders/ ------------------------------------------------*/
+.loader,
+.loader:before,
+.loader:after {
+  background: #00ff00;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+.loader {
+  color: #00ff00;
+  text-indent: -9999em;
+  margin: 88px auto;
+  position: relative;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 1.5em;
+}
+@-webkit-keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
 }
 
-
 </style>
-
