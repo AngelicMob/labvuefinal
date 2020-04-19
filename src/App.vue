@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="nav">
-      
+
 <!--importing and showing the components-->
       <!-- <home v-if="">Home</home>
       <createsnippet v-if="">Create</createsnippet>
@@ -10,13 +10,13 @@
       <homepage />
 
     </div>
-    
+
   </div>
 </template>
 
 <script>
 
-import homepage from './pages/homepage.vue';  
+import homepage from './pages/homepage.vue';
 
 export default {
 
@@ -42,7 +42,7 @@ export default {
 
 
   }
-  
+
   };
 
 
@@ -57,6 +57,7 @@ export default {
   padding: 0;
   margin: 0;
   background-color: #2a3439;
+  
 
 }
 
@@ -65,7 +66,7 @@ font-family: "Quicksand", sans-serif;
 }
 
 #app {
-  
+
   letter-spacing: 0.5px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,7 +76,7 @@ font-family: "Quicksand", sans-serif;
   background-repeat: no-repeat;
   background-color: #141e22;
   background-attachment: fixed;
-  background-size: cover; 
+  background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -85,7 +86,7 @@ font-family: "Quicksand", sans-serif;
 
 }
 
- 
+
 .nav {
   display: flex;
   justify-content: space-around;
@@ -93,8 +94,8 @@ font-family: "Quicksand", sans-serif;
   min-height: 100px;
   background-color: transparent;
   }
-  
-  
+
+
   .nav a {
       color: white;
       letter-spacing: 2px;

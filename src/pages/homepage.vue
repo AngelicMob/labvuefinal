@@ -1,12 +1,13 @@
 <template>
   <div class="home">
-   
+
       <div class="content">
-        <snippet />
+
         <createsnippet />
+        <snippet />
       </div>
 
-    
+
   </div>
 </template>
 
@@ -17,33 +18,33 @@ import createsnippet from '@/components/createsnippet.vue';
 
 
 export default {
-  
+
   name: 'homepage',
 
 
   components: {
-    
+
     snippet,
     createsnippet
 
-  }
-,
-
-data: () => ({
+  },
 
 
-}),
+  data: () => ({
 
-methods: {
+    showsnippetpage: false,
 
+  })
 
-}
-
-} 
-
-
+};
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap%22");
+
+body {
+
+  font-family: 'Quicksand', sans-serif;
+}
 
 </style>

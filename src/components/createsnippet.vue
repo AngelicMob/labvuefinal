@@ -1,26 +1,26 @@
 <template>
 <div class="form">
         <h3>Create a new Snippet</h3>
-        <form id="form1"> 
+        <form id="form1">
             <input v-model="title" type="text" id="title" placeholder="Title">
-            <textarea v-model="content" name="content" id="content" cols="30" rows="20" placeholder="Content no less than 15 characters"></textarea>
-               
+            <textarea v-model="content" name="content" id="content" cols="30" rows="20" placeholder="Content no less than 20 characters"></textarea>
+
         </form>
          <div class="controls">
                     <button class="btn btn1" @click="add">Upload</button>
-                    <button class="btn btn2">Cancel</button>          
-                </div>
+                    <button class="btn btn2">Cancel</button>
+        </div>
     </div>
-  
+
 </template>
-​
+
 <script>
 import axios from 'axios';
 const url = 'https://www.forverkliga.se/JavaScript/api/api-snippets.php?';
     export default {
-        
+
         name: "createsnippet",
-        
+
         data(){
             return {
                 title: '',
@@ -29,7 +29,7 @@ const url = 'https://www.forverkliga.se/JavaScript/api/api-snippets.php?';
         },
             methods: {
                 add(){
-            
+
                     console.log('add called with id:  ' + this.title + '  and content: ' + this.content)
                     axios.post(url, { add:'', title: this.title, content: this.content})
                     .then(res => console.log(res.data.message))
@@ -37,10 +37,15 @@ const url = 'https://www.forverkliga.se/JavaScript/api/api-snippets.php?';
                     this.title = '';
                     this.content = '';
                 }
-        ​   }
+           }
         }
 </script>
 <style scoped>
+
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap%22");
+body {
+    font-family: 'Quicksand', sans-serif;
+}
 
 h3{
     color: antiquewhite;
@@ -48,34 +53,38 @@ h3{
     font-family: 'Quicksand', sans-serif;
 }
 .form{
-    padding: 20px;  
+    padding: 20px;
 }
 input {
     width: 500px;
     padding: 12px 20px;
     margin: 8px 0;
-    
     background-color: grey;
     border: white 1px solid;
     color: antiquewhite;
 }
-textarea{  
+
+input[type=submit]{
+
+     color: #00877C;
+}
+textarea{
     background-color: rgba(0, 0, 0, 0.5);
     border: white 1px solid;
     color: antiquewhite;
     padding: 12px 20px;
     width: 500px;
-    
+
 }
 ::placeholder{
-    color: antiquewhite;
+    color: white;
 }
 .controls{
     float: right;
-    padding-top: 10px;   
+    padding-top: 10px;
 }
 .btn {
-    background-color: #00877C; 
+    background-color: #2EA19C;
     border: none;
     color: white;
     padding: 7px 32px;
@@ -85,20 +94,20 @@ textarea{
     margin: 7px 7px;
     transition-duration: 0.4s;
     cursor: pointer;
-    
+
 }
 .btn1 {
         background-color: black ;
-        color: #00877C; 
+        color: #00877C;
         border: 1px solid #00877C;
     }
     .btn1:hover {
         background-color: #00877C;
-        color: white; 
+        color: white;
     }
     .btn2 {
-        background-color: black; 
-        color: red; 
+        background-color: black;
+        color: red;
         border: 1px solid red;
     }
     .btn2:hover {
@@ -108,14 +117,14 @@ textarea{
 ::-webkit-scrollbar {
   width: 5px;
 }
-/* Track */
+
 ::-webkit-scrollbar-track {
-  background: rgb(102, 102, 102); 
+  background: rgb(102, 102, 102);
 }
- 
-/* Handle */
+
+
 ::-webkit-scrollbar-thumb {
-  /* background: #888;  */
+
   background: antiquewhite;
 }
 
