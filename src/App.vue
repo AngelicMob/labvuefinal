@@ -15,7 +15,6 @@
 <script>
 
 import homepage from './pages/homepage.vue';  
-import createsnippe from './components/createsnippet.vue';
 
 export default {
 
@@ -23,8 +22,7 @@ export default {
 
   components: {
 
-  homepage,
-  createsnippet
+    homepage
 
   },
 

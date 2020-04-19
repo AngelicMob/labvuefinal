@@ -38,7 +38,7 @@
 ​
 <script>
 ​
-import axios from 'axios'
+import axios from 'axios';
 const url = 'https://www.forverkliga.se/JavaScript/api/api-snippets.php?';
 
 export default {
@@ -50,29 +50,9 @@ export default {
         }
     },
     methods: {
-        getLatest(){
-            this.snippets = [];
-            axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?latest')
-            .then(res => this.snippets = res.data)
-            .catch(err => console.log(err))
-           
-        },
-        getMostUpvoted(){
-           this.snippets = [];
-            axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?best')
-            .then(res => this.snippets = res.data)
-            .catch(err => console.log(err))
-            //console.log(this.snippets)
-        },
-        getReported(){
-            this.snippets = [];
-             axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?reported')
-            .then(res => this.snippets = res.data)
-            .catch(err => console.log(err))
-           //console.log(this.snippets)
-        },
+
         voteUp(id){ 
-            console.log('vote up called with id:' + id)
+            console.log('vote up called with id:' + id)  
             this.snippets = []
             axios.post(url, { upvote:'', id:id})
             .then(res => {console.log(res.data.message)
@@ -83,6 +63,7 @@ export default {
             .catch(err => console.log(err))
           
         },
+        
         voteDown(id){
             console.log('vote down called with id:  ' + id)
             this.snippets = []
@@ -128,8 +109,31 @@ export default {
             .catch(err => console.log(err))
             
         }  
-    },
-    created(){
+        },
+        getLatest(){
+            this.snippets = [];
+            axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?latest')
+            .then(res => this.snippets = res.data)
+            .catch(err => console.log(err))
+           
+        },
+        getMostUpvoted(){
+           this.snippets = [];
+            axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?best')
+            .then(res => this.snippets = res.data)
+            .catch(err => console.log(err))
+            
+        },
+        getReported(){
+            this.snippets = [];
+             axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?reported')
+            .then(res => this.snippets = res.data)
+            .catch(err => console.log(err))
+           
+        },
+        
+        
+        created(){
             axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?latest')
             .then(res => this.snippets = res.data)
             .catch(err => console.log(err))

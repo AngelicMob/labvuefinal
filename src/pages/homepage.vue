@@ -2,6 +2,7 @@
   <div class="home">
    
       <div class="content">
+        <createsnippet />
         <snippet />
       </div>
 
@@ -15,7 +16,9 @@ import snippet from 'src/components/snippet.vue';
 export default {
   name: 'homepage',
   components: {
-    snippet
+    
+    snippet,
+    createsnippet
 
   }
 ,

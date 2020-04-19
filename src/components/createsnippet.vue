@@ -21,7 +21,7 @@ const url = 'https://www.forverkliga.se/JavaScript/api/api-snippets.php?';
 
 
 export default {
-    name:"createsnippet",
+    name: 'createsnippet',
      data(){
         return {
             title: '',
