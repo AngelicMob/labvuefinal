@@ -1,13 +1,8 @@
 <template>
   <div id="app">
     <div class="nav">
+        <homepage />
 
-<!--importing and showing the components-->
-      <!-- <home v-if="">Home</home>
-      <createsnippet v-if="">Create</createsnippet>
-      <createsnippet v-if="">View Snippet</createsnippet> -->
-
-      <homepage />
 
     </div>
 
@@ -20,7 +15,7 @@ import homepage from './pages/homepage.vue';
 
 export default {
 
-  name: 'App',
+name: 'App',
 
   components: {
 
@@ -30,8 +25,6 @@ export default {
 
 
   data: () => ({
-
-
 
 
   }),
@@ -56,8 +49,7 @@ export default {
 *{
   padding: 0;
   margin: 0;
-  background-color: #2a3439;
-  
+  /* background-color: #2a3439; */
 
 }
 
@@ -70,7 +62,6 @@ font-family: "Quicksand", sans-serif;
   letter-spacing: 0.5px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
   background-image: url('assets/solar-image.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -92,7 +83,7 @@ font-family: "Quicksand", sans-serif;
   justify-content: space-around;
   align-items: center;
   min-height: 100px;
-  background-color: transparent;
+
   }
 
 

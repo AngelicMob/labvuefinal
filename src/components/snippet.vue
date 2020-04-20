@@ -8,6 +8,8 @@
             </ul>
 
             <div class="container" v-for="snippet in snippets" v-bind:key="snippet.id" >
+
+            <div class = "content-background">
                 <h2>{{snippet.title}}</h2>
                 <div class="content">
 
@@ -19,17 +21,18 @@
 
 
                 </div>
+            </div>
 
+            <div class="score-rating">
+                    <p id="Score">Score : {{snippet.score}}</p>
+            </div>
                 <button class="btn btn1" @click="voteUp(snippet.id)">Vote Up</button>
                 <button class="btn btn2" @click="voteDown(snippet.id)">Vote Down</button>
                 <button v-if="snippet.is_reported === 0" class="btn btn2 btnR" @click="report(snippet.id)">Report</button>
                 <button v-else class="btn btn2 btnR" @click="unreport(snippet.id)">Unreport </button>
                 <button class="btn btn2 btnR" @click="del(snippet.id)">Delete</button>
 
-                <div class="rating">
-                        <p id="Score">Score : {{snippet.score}}</p>
-                        <p id="id">ID: {{snippet.id}}</p>
-                </div>
+
     </div>
 
 </div>
@@ -117,7 +120,7 @@ export default {
         },
         unreport(id){
             console.log('unreport called with id:  ' + id )
-            axios.post(url, {unreport:'',id:id})
+            axios.post(url, {unreport:'', id:id})
             .then(res => {console.log(res.data.message)
             if(res !== null){
                 this.getLatest();
@@ -139,12 +142,13 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap%22");
-body {
+* {
+
     font-family: 'Quicksand', sans-serif;
 }
 
 
-.rating{
+.score-rating{
         display: flex;
     }
     #Score{
@@ -194,6 +198,9 @@ body {
         color: rgb(192, 192, 192);
 
 
+    }
+    .content-background {
+        opacity: 0.2;
     }
     .btn {
         background-color: #519996;

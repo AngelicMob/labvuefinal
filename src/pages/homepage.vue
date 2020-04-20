@@ -3,11 +3,11 @@
 
       <div class="content">
 
-        <createsnippet />
-        <snippet />
+        <createsnippet v-if="!showsnippetpage" />
+        <button class="button btn-view" @click="!showsnippetpage">View snippets
+          <snippet v-if="showsnippets"/>
+        </button>
       </div>
-
-
   </div>
 </template>
 
@@ -33,18 +33,65 @@ export default {
   data: () => ({
 
     showsnippetpage: false,
+    showsnippets: false
 
-  })
+  }),
+
+  methods: {
+    showsnippetpage() {
+        this.showsnippetpage = true;
+        this.showsnippets = true;
+
+
+    }
+
+  }
 
 };
 </script>
 
 <style scoped>
+
 @import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap%22");
 
-body {
+* {
 
   font-family: 'Quicksand', sans-serif;
+
 }
+
+
+.button {
+  background-color: #00877C;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-weight: bold;
+
+}
+
+.btn-view {
+
+  background-color: #00877C;
+  color: white;
+
+
+}
+
+.btn-view:hover {
+
+  background-color: white;
+  color: black;
+  border: 2px solid #00877C;
+
+}
+
 
 </style>
