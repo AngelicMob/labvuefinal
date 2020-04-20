@@ -4,9 +4,9 @@
       <div class="content">
 
         <createsnippet v-if="!showsnippetpage" />
-        <button class="button btn-view" @click="!showsnippetpage">View snippets
-          <snippet v-if="showsnippets"/>
-        </button>
+        <button class="button btn-view">View snippets </button>
+          <snippet />
+        
       </div>
   </div>
 </template>

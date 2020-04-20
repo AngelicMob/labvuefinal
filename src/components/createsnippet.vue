@@ -72,7 +72,9 @@ input {
     margin: 8px 0;
     background-color: grey;
     border: white 1px solid;
+    border-radius: 1px;
     color: antiquewhite;
+    opacity: 0.7;
 
 }
 
@@ -83,6 +85,7 @@ input[type=submit]{
 textarea{
     background-color: rgba(0, 0, 0, 0.5);
     border: white 1px solid;
+    border-radius: 6px;
     color: antiquewhite;
     padding: 12px 20px;
     width: 880px;

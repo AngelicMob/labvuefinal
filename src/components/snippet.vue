@@ -9,7 +9,7 @@
 
             <div class="container" v-for="snippet in snippets" v-bind:key="snippet.id" >
 
-            <div class = "content-background">
+
                 <h2>{{snippet.title}}</h2>
                 <div class="content">
 
@@ -21,10 +21,10 @@
 
 
                 </div>
-            </div>
+
 
             <div class="score-rating">
-                    <p id="Score">Score : {{snippet.score}}</p>
+                    <p id="score-point">Score : {{snippet.score}}</p>
             </div>
                 <button class="btn btn1" @click="voteUp(snippet.id)">Vote Up</button>
                 <button class="btn btn2" @click="voteDown(snippet.id)">Vote Down</button>
@@ -150,12 +150,14 @@ export default {
 
 .score-rating{
         display: flex;
+        font-family: 'Quicksand', sans-serif;
+
     }
-    #Score{
-        color: chartreuse;
+    #score-point{
+        color: rgb(35, 209, 79);
     }
     #id{
-        color: chartreuse;
+        color: rgb(35, 209, 79);
 
     }
     ul{
@@ -185,7 +187,6 @@ export default {
         height: auto;
         margin: 50px auto 150px auto;
 
-
     }
     .content{
         background-color: #2a3439;
@@ -196,6 +197,7 @@ export default {
         overflow: auto;
         border: 1px solid #519996;
         color: rgb(192, 192, 192);
+        opacity: 0.8;
 
 
     }
