@@ -88,11 +88,14 @@ font-family: "Quicksand", sans-serif;
 
 
   .nav a {
-      color: white;
-      letter-spacing: 2px;
-      font-weight: normal;
-      font-size: 14px;
-      text-decoration-line: none;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 19px;
+    margin-left: 5px;
+    -webkit-text-decoration-line: none;
+    text-decoration-line: none;
   }
   .nav li {
       list-style: none;

@@ -4,9 +4,9 @@
       <div class="content">
 
         <createsnippet v-if="!showsnippetpage" />
-        <button class="button btn-view">View snippets </button>
+        <!-- <button class="button btn-view">View snippets </button> -->
           <snippet />
-        
+
       </div>
   </div>
 </template>
@@ -61,9 +61,10 @@ export default {
 }
 
 
-.button {
+/* .button {
   background-color: #00877C;
   border: none;
+  border-radius: 2px;
   color: white;
   padding: 16px 32px;
   text-align: center;
@@ -74,6 +75,7 @@ export default {
   transition-duration: 0.4s;
   cursor: pointer;
   font-weight: bold;
+  margin-left: 34px;
 
 }
 
@@ -81,6 +83,7 @@ export default {
 
   background-color: #00877C;
   color: white;
+
 
 
 }
@@ -91,7 +94,7 @@ export default {
   color: black;
   border: 2px solid #00877C;
 
-}
+} */
 
 
 </style>

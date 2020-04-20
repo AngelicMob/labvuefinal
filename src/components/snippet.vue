@@ -24,14 +24,13 @@
 
 
             <div class="score-rating">
-                    <p id="score-point">Score : {{snippet.score}}</p>
+                <p id="score-point">Score: {{snippet.score}}</p>
             </div>
-                <button class="btn btn1" @click="voteUp(snippet.id)">Vote Up</button>
-                <button class="btn btn2" @click="voteDown(snippet.id)">Vote Down</button>
-                <button v-if="snippet.is_reported === 0" class="btn btn2 btnR" @click="report(snippet.id)">Report</button>
-                <button v-else class="btn btn2 btnR" @click="unreport(snippet.id)">Unreport </button>
-                <button class="btn btn2 btnR" @click="del(snippet.id)">Delete</button>
-
+                <button class="btn vote" @click="voteUp(snippet.id)">Vote Up +</button>
+                <button class="btn btn2" @click="voteDown(snippet.id)">Vote Down -</button>
+                <button class="btn btn1" @click="del(snippet.id)">Delete x</button>s
+                <button v-if="snippet.is_reported === 0" class="btn btn1 report" @click="report(snippet.id)">! Report</button>
+                <button v-else class="btn btn1 report" @click="unreport(snippet.id)">Unreport </button>
 
     </div>
 
@@ -63,19 +62,19 @@ export default {
             axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?best')
             .then(res => this.snippets = res.data)
             .catch(err => console.log(err))
-            //console.log(this.snippets)
+
         },
         getReported(){
             this.snippets = [];
              axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?reported')
             .then(res => this.snippets = res.data)
             .catch(err => console.log(err))
-           //console.log(this.snippets)
+
         },
         voteUp(id){
             console.log('vote up called with id:' + id)
             this.snippets = []
-            axios.post(url, { upvote:'', id:id})
+            axios.post(url, { upvote:'', id: id})
             .then(res => {console.log(res.data.message)
                 if(res !== null){
                     this.getLatest();
@@ -87,7 +86,7 @@ export default {
         voteDown(id){
             console.log('vote down called with id:  ' + id)
             this.snippets = []
-            axios.post(url,{downvote:'', id:id })
+            axios.post(url,{downvote:'', id: id })
             .then(res => {console.log(res.data.message)
                 if(res !== null){
                     this.getLatest();
@@ -98,7 +97,7 @@ export default {
         del(id){
             console.log('delete called with id:  ' + id )
             this.snippets = []
-            axios.post(url, {delete:'',id:id})
+            axios.post(url, {delete:'',id: id})
             .then(res => {console.log(res.data.message)
             if(res !== null){
                 this.getLatest();
@@ -116,7 +115,7 @@ export default {
             }
             })
             .catch(err => console.log(err))
-           window.relo
+
         },
         unreport(id){
             console.log('unreport called with id:  ' + id )
@@ -154,28 +153,34 @@ export default {
 
     }
     #score-point{
-        color: rgb(35, 209, 79);
+        color: rgb(85, 219, 201);
     }
     #id{
-        color: rgb(35, 209, 79);
+        color: white;
 
     }
     ul{
         list-style-type: none;
-        float: right;
-        padding:0px 10px 30px 5px;
-        color: #519996;
+        text-align: center;
+        padding: 47px 3px 28px 58px;
+        color: transparent;
+
     }
+
+
     li{
         display: inline;
     }
     a{
-        color: #519996;
-        text-decoration: none;
+        color: antiquewhite;
+        text-decoration: underline;
+        letter-spacing: 2px;
     }
     a:hover{
-        text-decoration: underline;
+        text-decoration: none;
+        color:rgb(33, 180, 160);
     }
+
     h2{
         float: left;
         padding: 10px;
@@ -192,53 +197,75 @@ export default {
         background-color: #2a3439;
         min-height:200px;
         height: 300px;
-        width: 870px;
-        margin: 50px auto 10px 10px;
+        width: 880px;
+        margin: 50px auto 10px 8px;
         overflow: auto;
         border: 1px solid #519996;
         color: rgb(192, 192, 192);
         opacity: 0.8;
 
+    }
 
-    }
-    .content-background {
-        opacity: 0.2;
-    }
     .btn {
         background-color: #519996;
         border: none;
         color: white;
-        padding: 7px 32px;
+        padding: 7px 30px;
         text-align: center;
         text-decoration: none;
-
         font-size: 16px;
         margin: 7px 7px;
         transition-duration: 0.4s;
         cursor: pointer;
         float: left;
     }
+    .vote {
+        background-color: #5fcf50;
+        color: white;
+        font-weight: bold;
+    }
+    .vote:hover {
+        background-color: white ;
+        color: #27a816;
+        border: 0.5px solid #5fcf50;
+        font-weight: bold;
+
+    }
     .btn1 {
-        background-color: #151a1c ;
-        color: #519996;
-        border: 1px solid #519996;
+
+        background-color: black;
+        color: rgb(204, 60, 60);
+        border: 0.5px solid rgb(204, 60, 60);
+        font-weight: bold;
+
+
+
     }
     .btn1:hover {
-        background-color: #519996;
-        color: white;
-    }
-    .btn2 {
-        background-color: #151a1c;
-        color: red;
-        border: 1px solid red;
-    }
-    .btn2:hover {
+
         background-color: red;
         color: white;
+
     }
-    .btnR{
+
+    .btn2 {
+        background-color: rgb(204, 61, 61);
+        color: white;
+        font-weight: bold;
+
+
+    }
+    .btn2:hover {
+
+        background-color: white ;
+        color: #27a816;
+        border: 0.5px solid #5fcf50;
+        font-weight: bold;
+    }
+
+    .report{
         float: right;
-        margin-right:18px;
+        margin-right: 9px;
     }
     p{
         padding: 15px;
