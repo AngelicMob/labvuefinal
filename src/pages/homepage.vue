@@ -2,11 +2,8 @@
   <div class="home">
 
       <div class="content">
-
-        <createsnippet v-if="!showsnippetpage" />
-        <!-- <button class="button btn-view">View snippets </button> -->
-          <snippet />
-
+        <createsnippet />
+        <snippet />
       </div>
   </div>
 </template>
@@ -17,33 +14,12 @@ import snippet from '@/components/snippet.vue';
 import createsnippet from '@/components/createsnippet.vue';
 
 
-export default {
+  export default {
 
-  name: 'homepage',
-
-
-  components: {
-
-    snippet,
-    createsnippet
-
-  },
-
-
-  data: () => ({
-
-    showsnippetpage: false,
-    showsnippets: false
-
-  }),
-
-  methods: {
-    showsnippetpage() {
-        this.showsnippetpage = true;
-        this.showsnippets = true;
-
-
-    }
+    name: 'homepage',
+      components: {
+      snippet,
+      createsnippet
 
   }
 
@@ -54,11 +30,11 @@ export default {
 
 @import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap%22");
 
-* {
+  * {
 
-  font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 
-}
+  }
 
 
 /* .button {

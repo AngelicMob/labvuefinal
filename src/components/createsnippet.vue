@@ -1,17 +1,20 @@
 <template>
 <div class="form">
 
-
+        <h1>Welcome!</h1>
         <h3>Create a new Snippet</h3>
+        <img src="@/assets/code.svg" alt="code-icon">
 
+        <!-- create snippet inputform -->
         <form id="input-form">
-            <input v-model="title" type="text" id="title" placeholder="Title">
-            <textarea v-model="content" name="content" id="content" cols="35" rows="20" placeholder="Post your snippet code here..."></textarea>
+            <input type="text" id="title" v-model="title" placeholder="Title">
+            <textarea name="content" id="content" cols="35" rows="20" v-model="snippetcode" placeholder="Post your snippet code here..."></textarea>
 
         </form>
+
          <div class="controls">
-                    <button class="btn btn1" @click="add">Upload</button>
-                    <button class="btn btn2">Cancel</button>
+            <button class="btn btn1" @click="add">Upload</button>
+            <button class="btn btn2">Cancel</button>
         </div>
 
 </div>
@@ -21,33 +24,29 @@
 <script>
 import axios from 'axios';
 const url = 'https://www.forverkliga.se/JavaScript/api/api-snippets.php?';
+
     export default {
-
         name: "createsnippet",
-
         data(){
             return {
                 title: '',
-                content: ''
+                snippetcode: ''
             }
         },
             methods: {
                 add(){
-
-                    console.log('added snippetID called:  ' + this.title + ' + snippet content: ' + this.content)
-                    axios.post(url, { add:'', title: this.title, content: this.content})
+                    axios.post(url, { add:'', title: this.title, content: this.snippetcode})
                     .then(res => console.log(res.data.message))
                     .catch(err => console.log('does not work' + err))
                     this.title = '';
-                    this.content = '';
+                    this.snippetcode = '';
                 }
            }
         }
 </script>
+
 <style scoped>
-
 @import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap%22");
-
 
 * {
 
@@ -56,6 +55,21 @@ const url = 'https://www.forverkliga.se/JavaScript/api/api-snippets.php?';
 
 .form{
     padding: 35px;
+
+}
+
+img {
+
+    width: 30px;
+    background-position: center;
+
+}
+
+h1 {
+     color: white;
+     text-align: center;
+     font-weight: bold;
+     padding-bottom: 16px;
 
 }
 
@@ -73,7 +87,7 @@ input {
     background-color: grey;
     border: white 1px solid;
     border-radius: 1px;
-    color: antiquewhite;
+    color: white;
     opacity: 0.7;
 
 }

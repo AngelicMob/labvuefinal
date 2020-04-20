@@ -1,12 +1,13 @@
 <template>
 <div>
 
+            <!-- view the latest snippets section -->
             <ul>
                 <li><a href="#" @click="getLatest">Latest</a></li> |
                 <li><a href="#" @click="getMostUpvoted">Most Upvoted</a></li> |
-                <li><a href="#" @click="getReported">Reported</a></li>
             </ul>
 
+            <!-- created snippets container -->
             <div class="container" v-for="snippet in snippets" v-bind:key="snippet.id" >
 
 
@@ -18,19 +19,15 @@
                                 <p>{{snippet.content}}</p>
                             </code>
                         </pre>
-
-
                 </div>
 
-
+            <!-- score-rating section -->
             <div class="score-rating">
-                <p id="score-point">Score: {{snippet.score}}</p>
+                <p id="score-point">Total Score: {{snippet.score}}</p>
             </div>
                 <button class="btn vote" @click="voteUp(snippet.id)">Vote Up +</button>
-                <button class="btn btn2" @click="voteDown(snippet.id)">Vote Down -</button>
-                <button class="btn btn1" @click="del(snippet.id)">Delete x</button>s
-                <button v-if="snippet.is_reported === 0" class="btn btn1 report" @click="report(snippet.id)">! Report</button>
-                <button v-else class="btn btn1 report" @click="unreport(snippet.id)">Unreport </button>
+                <button class="btn votedown" @click="voteDown(snippet.id)">Vote Down -</button>
+                <button class="btn delete" @click="del(snippet.id)">Delete x</button>
 
     </div>
 
@@ -41,10 +38,11 @@
 
 import axios from 'axios';
 const url = 'https://www.forverkliga.se/JavaScript/api/api-snippets.php?';
-export default {
 
-    name: 'Snippet',
-    data(){
+    export default {
+
+        name: 'Snippet',
+        data(){
         return {
             snippets: []
         }
@@ -60,13 +58,6 @@ export default {
         getMostUpvoted(){
            this.snippets = [];
             axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?best')
-            .then(res => this.snippets = res.data)
-            .catch(err => console.log(err))
-
-        },
-        getReported(){
-            this.snippets = [];
-             axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?reported')
             .then(res => this.snippets = res.data)
             .catch(err => console.log(err))
 
@@ -106,45 +97,25 @@ export default {
             .catch(err => console.log(err))
 
         },
-        report(id){
-            console.log('report called with id:  ' + id )
-            axios.post(url, {report:'',id:id})
-            .then(res => {console.log(res.data.message)
-            if(res !== null){
-                this.getLatest();
-            }
-            })
-            .catch(err => console.log(err))
 
-        },
-        unreport(id){
-            console.log('unreport called with id:  ' + id )
-            axios.post(url, {unreport:'', id:id})
-            .then(res => {console.log(res.data.message)
-            if(res !== null){
-                this.getLatest();
-            }
-            })
-            .catch(err => console.log(err))
-
-        }
-    },
-    created(){
+        created(){
             axios.get('https://www.forverkliga.se/JavaScript/api/api-snippets.php?latest')
             .then(res => this.snippets = res.data)
             .catch(err => console.log(err))
             console.log(this.snippets)
+        }
     }
+
 }
 </script>
 
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap%22");
-* {
+    * {
 
     font-family: 'Quicksand', sans-serif;
-}
+    }
 
 
 .score-rating{
@@ -154,6 +125,7 @@ export default {
     }
     #score-point{
         color: rgb(85, 219, 201);
+        margin-left: -8px;
     }
     #id{
         color: white;
@@ -231,31 +203,30 @@ export default {
         font-weight: bold;
 
     }
-    .btn1 {
+    .votedown {
 
-        background-color: black;
+        background-color: transparent;
         color: rgb(204, 60, 60);
         border: 0.5px solid rgb(204, 60, 60);
         font-weight: bold;
 
-
-
     }
-    .btn1:hover {
+    .votedown:hover {
 
         background-color: red;
         color: white;
 
     }
 
-    .btn2 {
+    .delete {
         background-color: rgb(204, 61, 61);
         color: white;
         font-weight: bold;
-
+        float: right;
+        margin-right: 10px;
 
     }
-    .btn2:hover {
+    .delete:hover {
 
         background-color: white ;
         color: #27a816;
@@ -263,10 +234,7 @@ export default {
         font-weight: bold;
     }
 
-    .report{
-        float: right;
-        margin-right: 9px;
-    }
+
     p{
         padding: 15px;
     }
@@ -279,7 +247,6 @@ export default {
 }
 
 ::-webkit-scrollbar-thumb {
-  /* background: #888;  */
   background: #519996;
 }
 
